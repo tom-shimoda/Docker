@@ -1,0 +1,12 @@
+services:
+  jenkinsmaster:
+    container_name: jenkins
+    image: jenkins/jenkins:latest
+    restart: unless-stopped
+    ports:
+      - 8080:8080
+      - 50000:50000
+    environment:
+      - JENKINS_OPTS="--sessionTimeout=1440" # ログインのタイムアウト時間を延ばしておく
+    volumes:
+      - ./jenkins_home:/var/jenkins_home

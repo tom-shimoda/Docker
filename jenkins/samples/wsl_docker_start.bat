@@ -9,4 +9,8 @@ pause & exit/b
 # -- = 残りのコマンド ラインをそのまま渡す (wsl --help 参照)
 # -S = 標準入力でパスワードを読み込む (https://www.sejuku.net/blog/54857)
 echo pass | wsl -- sudo -S service docker start
+
+# slaveの開始
+# -u = 実行ユーザー指定
+echo pass | wsl -- sudo -u user -S sh /home/user/Documents/jenkins_slave/start.sh
 exit
