@@ -1,6 +1,14 @@
-50000 port はslave用らしい。sshでslave接続する場合はこのポートを使わないみたい？
+# linux上のDockerから構築する場合
+生成されるjenkins_homeフォルダの所有権がrootになり、アクセス違反でjenkinsが起動しないため以下コマンドで現在のユーザーに所有権変更
+```
+sudo chown -R ${USER}:${USER} jenkins_home
+```
+[参考](https://qiita.com/koiusa/items/62a144f545a11df165b1)
+
 
 # wsl上にslaveを立てる方法 (masterノードをwslで立てるとユーザーがjenkinsとなりいろいろ不便なので基本的にjobはslaveで実行)
+(50000 port はslave用らしい。sshでslave接続する場合はこのポートを使わないみたい？)
+
 まずはjenkinsを立てて(masterノード)、[ここ](https://qiita.com/masatomix/items/6d751d361af760346383)を参考にslaveを追加する
 
 リモートFSに`/home/user/Documents/jenkins_slave/jenkins_home`を設定した際の例
@@ -33,3 +41,4 @@ sh start.sh &
 
 ## Windowsスタートアップ時に起動させる場合
 win+r より`shell:startup`を入力し、./samples/wsl_docker_start.bat を配置 ("slaveの開始項目"が今回該当する部分)
+
