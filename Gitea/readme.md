@@ -23,13 +23,13 @@ rm -rf gitea-data
 ```
 # .ssh/configにて以下のように記載した場合
 Host gitea
-  HostName 163.44.115.221
+  HostName <ipアドレス>
   User git
   Port 3022
   IdentityFile ~/.ssh/gitea_conoha
 
 
-ssh://git@163.44.115.221:3022/t.shimoda/jenkins-jobs.git
+ssh://git@<ipアドレス>:3022/t.shimoda/jenkins-jobs.git
 ↓
 ssh://gitea/t.shimoda/jenkins-jobs.git
 ```
