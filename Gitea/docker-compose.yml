@@ -6,7 +6,7 @@ services:
       - ./gitea-data:/data
     ports:
       - "3000:3000"
-      - "3022:10022"
+      - "3022:3022"
     environment:
       - DB_TYPE=mysql
       - DB_HOST=db
