@@ -8,6 +8,7 @@ services:
       - "3000:3000"
       - "3022:3022"
     environment:
+      - ROOT_URL=http://ts-dev.top/gitea # nginxリバースプロキシ対応で追加 [参考](https://docs.gitea.com/administration/reverse-proxies#nginx-with-a-sub-path)
       - DB_TYPE=mysql
       - DB_HOST=db
       - DB_NAME=gitea
