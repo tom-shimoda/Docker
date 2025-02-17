@@ -1,0 +1,15 @@
+version: '3'
+services:
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    extra_hosts:
+      # dockerホストマシンのipアドレスを使用する
+      - "host.docker.internal:host-gateway"
+    ports:
+      - 443:443
+    volumes:
+      - ./config:/etc/nginx/conf.d
+      - ./log:/var/log/nginx
+      - ./client_certificates:/etc/nginx/client_certificates
+      - ./html:/var/www/html

@@ -8,7 +8,9 @@ services:
       - 50000:50000
     environment:
       - JAVA_OPTS="-Duser.timezone=Asia/Tokyo" # 日本時間に
-      - JENKINS_OPTS="--sessionTimeout=1440" # タイムアウト時間を延長
+      # - JENKINS_OPTS=--sessionTimeout=1440 # タイムアウト時間を延長
+      # - JENKINS_OPTS=--prefix=/jenkins # urlにprefix追加 (リバースプロキシ用にhttp://localhost:8888/jenkins/でアクセスするよう変更)
+      - JENKINS_OPTS=--sessionTimeout=1440 --prefix=/jenkins
     volumes:
       # short syntaxを使用しバインドするフォルダ(orファイル)が存在しない場合、常にディレクトリが自動生成される。
       # また所有者はrootとなる。
@@ -16,4 +18,4 @@ services:
       - type: bind
         source: "./jenkins_home"
         target: "/var/jenkins_home"
-          #- ./jenkins_home:/var/jenkins_home
+      # - ./jenkins_home:/var/jenkins_home
