@@ -9,3 +9,4 @@ fullchain.pem
 privkey.pem
 
 log/
+nginx.conf
