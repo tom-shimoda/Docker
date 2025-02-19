@@ -1,5 +1,6 @@
 ca.crt
 ca.key
+ca.crl
 user.crt
 user.csr
 user.key
