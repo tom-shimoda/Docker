@@ -2,22 +2,23 @@ version: '3'
 services:
   web:
     image: gitea/gitea:latest
+    restart: unless-stopped
     volumes:
       - ./gitea-data:/data
     ports:
       - "3000:3000"
-      - "10022:10022"
+      - "3022:3022"
     environment:
+      - ROOT_URL=http://ts-dev.top/gitea # nginxリバースプロキシ対応で追加 [参考](https://docs.gitea.com/administration/reverse-proxies#nginx-with-a-sub-path)
       - DB_TYPE=mysql
-      - DB_HOST=db:40000
+      - DB_HOST=db
       - DB_NAME=gitea
       - DB_USER=gitea
       - DB_PASSWD=gitea
       - TZ=Japan
-      - SSH_PORT=10022
+      - SSH_PORT=3022
     depends_on:
       - db
-    restart: unless-stopped
   db:
     image: mariadb:10
     restart: unless-stopped
@@ -27,7 +28,7 @@ services:
       - MYSQL_USER=gitea
       - MYSQL_PASSWORD=gitea
     ports:
-      - 40000:3306
+      - "40000:3306"
     volumes:
       - ./mysql-data:/var/lib/mysql
 

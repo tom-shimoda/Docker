@@ -1,0 +1,13 @@
+ca.crt
+ca.key
+ca.crl
+user.crt
+user.csr
+user.key
+user.pfx
+
+fullchain.pem
+privkey.pem
+
+log/
+nginx.conf
